@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sweety ❤️</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #fff0f5);
+  color: #9d315a;
+  overflow-x: hidden;
+}
+.card {
+  width: 100%;
+  max-width: 430px;
+  padding: 30px 22px;
+  text-align: center;
+  background: #ffffffed;
+  border-radius: 25px;
+  box-shadow: 0 10px 35px #c85d852e;
+  position: relative;
+  z-index: 2;
+}
+.heart { font-size: 60px; animation: beat 1s infinite; }
+h1 { color: #e83e78; }
+p { line-height: 1.8; }
+.note {
+  padding: 16px;
+  margin: 20px 0;
+  background: #fff0f6;
+  border-radius: 16px;
+}
+h2 { color: #d6336c; }
+button {
+  padding: 13px 22px;
+  margin: 5px;
+  border: 0;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+#yes { background: #ed4380; color: white; }
+#no { background: #ffe3ed; color: #a52f59; }
+#result { display: none; margin-top: 20px; }
+.floating {
+  position: fixed;
+  bottom: -40px;
+  animation: rise 5s linear forwards;
+  pointer-events: none;
+}
+@keyframes beat {
+  50% { transform: scale(1.15); }
+}
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="heart">💗</div>
+  <p>A Little Message For You ✨</p>
+  <h1>Hey, Sweety! 💕</h1>
+  <p>There's something special I want to tell you...</p>
+
+  <div class="note">
+    Every time I talk to you, you make my day
+    a little brighter. 🌸<br><br>
+    You mean a lot to me, and I wanted you to
+    know how special you are. 💖
+  </div>
+
+  <h2>Will you be mine? 💍</h2>
+  <p>What do you say? ❤️</p>
+
+  <button id="yes" onclick="sayYes()">YES! 💖</button>
+  <button id="no" onclick="sayNo()">NO 🙈</button>
+
+  <div id="result">
+    <div class="heart">🥹❤️</div>
+    <h2>You've Made My Day!</h2>
+    <p>Thank you for sharing your feelings with me. 💕
+    Let's make beautiful memories together! 🌷</p>
+  </div>
+</main>
+
+<script>
+function makeHeart() {
+  const heart = document.createElement("span");
+  heart.className = "floating";
+  heart.textContent = ["💗", "💕", "💖", "❤️"][
+    Math.floor(Math.random() * 4)
+  ];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (20 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(makeHeart, 600);
+
+function sayYes() {
+  document.getElementById("result").style.display = "block";
+  document.getElementById("yes").style.display = "none";
+  document.getElementById("no").style.display = "none";
+  for (let i = 0; i < 20; i++) {
+    setTimeout(makeHeart, i * 100);
+  }
+}
+
+function sayNo() {
+  document.querySelector("h2").textContent = "That's okay, Sweety 💗";
+  document.querySelectorAll("p")[2].textContent =
+    "Your feelings matter. Thank you for being honest. 🌷";
+  document.getElementById("no").textContent = "Got it 💕";
+}
+</script>
+</body>
+</html>
